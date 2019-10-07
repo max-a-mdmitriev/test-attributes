@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Max\TestAttributes\Api\SalesInformationInterface" type="Max\TestAttributes\Model\SalesInformation"/>
+    <type name="Magento\Catalog\Api\ProductRepositoryInterface">
+        <plugin name="Max_TestAttributes" type="Max\TestAttributes\Plugin\ProductGet"/>
+    </type>
+    <type name="Max\TestAttributes\Api\SalesInformationInterface">
+        <arguments>
+            <argument name="orderStatus" xsi:type="array">
+                <item name="new" xsi:type="const">\Magento\Sales\Model\Order::STATE_NEW</item>
+                <item name="processing" xsi:type="const">\Magento\Sales\Model\Order::STATE_PROCESSING</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
